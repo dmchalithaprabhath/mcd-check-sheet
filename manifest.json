@@ -1,0 +1,67 @@
+{
+    "name": "MCD Check sheet",
+    "short_name": "MCD Check",
+    "description": "MCD Check sheet for daily checklists with offline use, PDF export, and sharing capabilities",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffd600",
+    "theme_color": "#ffd600",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["productivity", "utilities"],
+    "icons": [
+        {
+            "src": "icons/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Add New Item",
+            "short_name": "Add Item",
+            "description": "Quickly add a new checklist item",
+            "url": "/?action=add",
+            "icons": [
+                {
+                    "src": "icons/icon-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Export PDF",
+            "short_name": "Export",
+            "description": "Export today's checklist as PDF",
+            "url": "/?action=export",
+            "icons": [
+                {
+                    "src": "icons/icon-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshots/mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "screenshots/desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ]
+} 

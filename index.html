@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCD Check sheet</title>
+    <meta name="description" content="Daily checklist app for offline use">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/logo.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="icons/logo.png" alt="McDonald's Logo" class="app-logo">
+                    <span class="sheet-title">MCD Check sheet</span>
+                </div>
+                <div class="header-actions">
+                    <button id="addItemBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Item
+                    </button>
+                    <button id="resetChecklistBtn" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Reset Checklist
+                    </button>
+                    <button id="exportBtn" class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Export PDF
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Section -->
+        <section class="progress-section">
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text">Completion Progress</span>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span id="completedCount">0</span> of <span id="totalCount">0</span> completed
+                </div>
+            </div>
+        </section>
+
+        <!-- Checklist Items -->
+        <main class="main-content">
+            <div class="checklist-container" id="checklistContainer">
+                <!-- Checklist items will be dynamically generated here -->
+            </div>
+        </main>
+
+        <!-- Add Item Modal -->
+        <div id="addItemModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Item</h2>
+                    <button class="close-btn" id="closeAddModal">&times;</button>
+                </div>
+                <form id="addItemForm">
+                    <div class="form-group">
+                        <label for="itemTitle">Item Title</label>
+                        <input type="text" id="itemTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemNotes">Notes (optional)</label>
+                        <textarea id="itemNotes" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelAdd">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Edit Item Modal -->
+        <div id="editItemModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Edit Item</h2>
+                    <button class="close-btn" id="closeEditModal">&times;</button>
+                </div>
+                <form id="editItemForm">
+                    <input type="hidden" id="editItemId">
+                    <div class="form-group">
+                        <label for="editItemTitle">Item Title</label>
+                        <input type="text" id="editItemTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemNotes">Notes</label>
+                        <textarea id="editItemNotes" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Share Modal -->
+        <div id="shareModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Share Checklist</h2>
+                    <button class="close-btn" id="closeShareModal">&times;</button>
+                </div>
+                <div class="share-options">
+                    <button class="share-btn email-share" id="emailShare">
+                        <i class="fas fa-envelope"></i> Email
+                    </button>
+                    <button class="share-btn whatsapp-share" id="whatsappShare">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="share-btn download-share" id="downloadShare">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="sw.js"></script>
+</body>
+</html> 

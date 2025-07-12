@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="output"></div>
+    
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const output = document.getElementById('output');
+        
+        function generateIcon(size) {
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#4CAF50');
+            gradient.addColorStop(1, '#45a049');
+            
+            // Draw rounded rectangle background
+            const radius = size * 0.2;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.moveTo(radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.lineTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw checklist icon
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = size * 0.08;
+            
+            // Draw clipboard
+            const clipX = size * 0.25;
+            const clipY = size * 0.2;
+            const clipWidth = size * 0.5;
+            const clipHeight = size * 0.6;
+            
+            // Clipboard top
+            ctx.fillRect(clipX, clipY, clipWidth, clipHeight * 0.1);
+            
+            // Clipboard body
+            ctx.strokeRect(clipX, clipY + clipHeight * 0.1, clipWidth, clipHeight * 0.9);
+            
+            // Draw checkmarks
+            const checkSize = size * 0.15;
+            const checkSpacing = size * 0.25;
+            const startY = clipY + clipHeight * 0.3;
+            
+            for (let i = 0; i < 3; i++) {
+                const x = clipX + clipWidth * 0.2;
+                const y = startY + i * checkSpacing;
+                
+                // Checkmark
+                ctx.beginPath();
+                ctx.moveTo(x, y + checkSize * 0.3);
+                ctx.lineTo(x + checkSize * 0.3, y + checkSize);
+                ctx.lineTo(x + checkSize, y + checkSize * 0.2);
+                ctx.stroke();
+            }
+            
+            // Convert to blob and download
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `icon-${size}x${size}.png`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                output.innerHTML += `<p>Generated icon-${size}x${size}.png</p>`;
+            }, 'image/png');
+        }
+        
+        // Generate all icons
+        sizes.forEach(size => {
+            setTimeout(() => generateIcon(size), 100);
+        });
+    </script>
+</body>
+</html> 
