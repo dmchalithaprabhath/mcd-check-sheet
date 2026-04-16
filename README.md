@@ -95,6 +95,7 @@ The app comes pre-loaded with these daily checklist items:
 - Monthly
 - BIB
 - Ice Maker Switch
+- Shake Machine Button
 - Green file
 - Office Air conditioner off
 - Office lights off
@@ -105,6 +106,8 @@ The app comes pre-loaded with these daily checklist items:
 - Gas Valve x 3
 - Marinatior, 4 Switches
 - Grill, Steamer, Toasters, monitors
+- ORB Monitors x 2
+- Display Boards x 2
 - Utility data – if Sunday
 - Door lock checks x2
 - POS key keeping
