@@ -103,6 +103,7 @@ The app comes pre-loaded with these daily checklist items:
 - Coupon stand, toys, fan
 - TV, Radio
 - Counter Air conditioners
+- Air curtain
 - Gas Valve x 3
 - Marinatior, 4 Switches
 - Grill, Steamer, Toasters, monitors
