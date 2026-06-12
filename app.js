@@ -64,7 +64,8 @@ class DailyChecklistApp {
             "Hand washing sheet",
             "Daily close x 2 Papers",
             "Duct off",
-            "Secom on"
+            "Secom on",
+            "Air curtain"
         ];
         this.checklistItems = defaultItems.map((title, index) => ({
             id: `item_${Date.now()}_${index}`,
